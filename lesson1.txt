@@ -1,0 +1,118 @@
+Argument Passing
+sys.argv: là 1 list trong python chứa những tham số được người dùng truyền vào
+What is argv[0]? 
+sys.argv[0] là tên của file muốn thực thi
+Operator
+/: trả về kiểu float
+//: trả về giá trị int làm tròn xuống
+**: mũ
+_: biến này lưu giá trị cuối cùng nếu ko được gán cho biến nào
+VD: a = 50 
+    a + 30
+    _ = 80
+
+STRING
+word = 'Python'
+word[0]  # character in position 0
+word[5]  # character in position 5
+word[-1]  # last character
+word[-2]  # second-last character
+word[0:2] characters from position 0 (included) to 2 (excluded)
+word[:2]   # character from the beginning to position 2
+word[4:]   # characters from position 4 (included) to the end
+word[-2:]  # characters from the second-last (included) to the end
+
+Lists
+squares = [1, 4, 9, 16, 25]
+squares[0]  # indexing returns the item
+squares[-3:]  # slicing returns a new list
+
+Cho phép assign value cho vị trí 
+VD: squares[0] = 3
+
+Gộp 2 list
+a = ['a', 'b', 'c']
+n = [1, 2, 3]
+x = [a, n] #[['a', 'b', 'c'], [1, 2, 3]]
+
+match Statements:  giống với switch case
+VD:
+ match status:
+    case 400:
+        return "Bad request"
+    case 404:
+        return "Not found"
+    case 418:
+        return "I'm a teapot"
+    case _:
+        return "Something's wrong with the internet"
+
+Keyword Arguments
+Truyền tham số vào hàm có 2 
+*kwarg: là 1 tuple những biến truyền tự do theo thứ tự (phải khai báo trước **kwarg)
+#tuple: gần như là list lưu dạng a = () khác với list a =[]. Tuple thì không cho thay đổi giá trị các phần tử giống const
+**kwarg: là 1 dạng dict (object in Javascript)
+
+VD:
+def cheeseshop(kind, *arguments, **keywords):
+    pass
+
+cheeseshop("Limburger", "It's very runny, sir.",
+           "It's really very, VERY runny, sir.",
+           shopkeeper="Michael Palin",
+           client="John Cleese",
+           sketch="Cheese Shop Sketch")
+kind= 'Limburger'
+*arguments: ("It's very runny, sir.", "It's really very, VERY runny, sir.")
+**keywords: {
+    shopkeeper="Michael Palin",
+    client="John Cleese",
+    sketch="Cheese Shop Sketch"
+    }
+-------------------------------------------------------------------------------------------    
+Coding style
+PEP 8
+- Sử dụng thụt lề 4 dấu cách, không chứa tabs
+- 1 dòng không quá 79 ký tự
+- Sử dụng dòng trống để phân cách các hàm và lớp, và những logic lớn trong code
+- Đặt comment trên 1 dòng riêng
+- Sử dụng docstrings
+- Sử dụng space giữa các toán tử và sau dấu ,
+- Viết hoa chữ cái đầu tiên cho class, viết thường và gạch dưới cho hàm và phương thức
+- Luôn luôn sử dụng self là tên cho tham số đầu tiên của hàm
+
+-------------------------------------------------------------------------------------------    
+List Comprehensions
+- Cách viết ngắn gọn
+- newlist = [expression for item in iterable if condition == True]
+|----------------------------------|----------------------------------------------------|
+|squares = []                      |                                                    |     
+|for x in range(10):               | C1:  squares = list(map(lambda x: x**2, range(10)))|       
+|    squares.append(x**2)          | C2:  squares = [x**2 for x in range(10)]           |                                   |     
+|----------------------------------|----------------------------------------------------|
+-------------------------------------------------------------------------------------------    
+
+Sets
+Tập hợp là tập hợp không có thứ tự không có phần tử trùng lặp
+Cách dùng: {} Hoặc set()
+-------------------------------------------------------------------------------------------    
+
+zip() || zip(*iterables, strict=False)
+strict = True: yêu cầu 2 mảng cùng độ dài
+Loop 2 hay nhiều mảng cùng 1 lúc
+questions = ['name', 'quest', 'favorite color']
+answers = ['lancelot', 'the holy grail', 'blue']
+for q, a in zip(questions, answers):
+    print('What is your {0}?  It is {1}.'.format(q, a))
+-------------------------------------------------------------------------------------------    
+sorted || sorted(iterable, /, *, key=None, reverse=False)
+
+-------------------------------------------------------------------------------------------    
+The operators in and not in: kiểm tra 1 value có tồn tại trong 1 iterable nào đó ko
+The operators is and is not: So sánh 2 Object có gioogns nhau hay ko
+
+a < b == c: kiểm tra a có nhỏ hơn b và b bằng c hay ko
+
+Boolean operators and and or, not
+not: có độ ưu tiên cao nhất trong Comparisons 
+or: có độ ưu tiên thấp nhất
